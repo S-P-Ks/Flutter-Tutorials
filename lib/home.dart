@@ -43,13 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Tip Calculator")),
-      body: Container(
+        appBar: AppBar(title: const Text("Tip Calculator")),
+        backgroundColor: Colors.white,
+        body: Container(
           margin: EdgeInsets.all(25),
-          child: Center(
-              child: Column(
+          child: SingleChildScrollView(
+              child: Center(
+                  child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Image.asset("./assets/money.jpg",
+                  height: 200, colorBlendMode: BlendMode.colorBurn),
               TextField(
                 onChanged: ((value) => billAmount = double.parse(value)),
                 decoration: const InputDecoration(hintText: "Bill Amount"),
@@ -76,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Spacer(),
                   GestureDetector(
                     onTap: (() {
-                      if (tipPercentage <= 1) {
+                      if (tipPercentage > 1) {
                         setState(() {
                           tipPercentage -= 1;
                         });
@@ -121,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Spacer(),
                   GestureDetector(
                     onTap: (() {
-                      if (people >= 1) {
+                      if (people > 1) {
                         setState(() {
                           people -= 1;
                         });
@@ -201,6 +205,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   : Container()
             ],
           ))),
-    );
+        ));
   }
 }
