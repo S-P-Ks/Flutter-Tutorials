@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ResutlScreen extends StatelessWidget {
-  int _totalScore;
+  final int _totalScore;
   VoidCallback restartGame;
-  ResutlScreen(this._totalScore, this.restartGame);
+  ResutlScreen(this._totalScore, this.restartGame, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("Your score is $_totalScore"),
           InkWell(

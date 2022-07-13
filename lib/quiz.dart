@@ -4,7 +4,7 @@ import 'package:flutter_tutorials/questions.dart';
 import 'package:flutter_tutorials/result.dart';
 
 class QuizScreen extends StatefulWidget {
-  QuizScreen({Key? key}) : super(key: key);
+  const QuizScreen({Key? key}) : super(key: key);
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -42,27 +42,27 @@ class _QuizScreenState extends State<QuizScreen> {
     {
       "questionText": "What do you like ?",
       "answers": [
-        {"text": "Tiger", "score": 10},
         {"text": "Lion", "score": 8},
         {"text": "Cheetah", "score": 9},
-        {"text": "Rabbit", "score": 7}
+        {"text": "Rabbit", "score": 7},
+        {"text": "Tiger", "score": 10},
       ]
     },
     {
       "questionText": "Whom do you want to become ?",
       "answers": [
+        {"text": "Rabbit", "score": 7},
         {"text": "Tiger", "score": 10},
-        {"text": "Lion", "score": 8},
         {"text": "Cheetah", "score": 9},
-        {"text": "Rabbit", "score": 7}
+        {"text": "Lion", "score": 8},
       ]
     },
     {
       "questionText": "What you dream of becoming?",
       "answers": [
+        {"text": "Cheetah", "score": 9},
         {"text": "Tiger", "score": 10},
         {"text": "Lion", "score": 8},
-        {"text": "Cheetah", "score": 9},
         {"text": "Rabbit", "score": 7}
       ]
     }
