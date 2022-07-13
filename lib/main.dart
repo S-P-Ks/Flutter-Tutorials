@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials/home.dart';
+import './home.dart';
 
 void main(List<String> args) {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: "Tip Calculator", home: HomeScreen());
+    return MaterialApp(title: "Tip Calculator", home: HomeScreen());
   }
 }

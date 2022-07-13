@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorials/widgets/new_transaction.dart';
+import 'package:flutter_tutorials/widgets/transaction_list.dart';
+import 'model/transaction.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +25,9 @@ class HomeScreen extends StatelessWidget {
               elevation: 5,
               child: Text("Chart!"),
             ),
-          )
+          ),
+          AddTransaction(),
+          TransactionList()
         ],
       ),
     );
