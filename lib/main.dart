@@ -10,9 +10,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Tip Calculator",
-      home: HomeScreen(),
-    );
+    return const MaterialApp(title: "Tip Calculator", home: HomeScreen());
   }
 }
