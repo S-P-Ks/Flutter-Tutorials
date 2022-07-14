@@ -80,6 +80,16 @@ flutter:
         - asset: ./fonts/EduQLDBeginner-Regular.ttf
         - asset: ./fonts/EduQLDBeginner-Medium.ttf
         - asset: ./fonts/EduQLDBeginner-Bold.ttf
+    - family: Roboto
+      fonts:
+        - asset: ./assets/fonts/Roboto-Light.ttf
+        - asset: ./assets/fonts/Roboto-Medium.ttf
+        - asset: ./assets/fonts/Roboto-Bold.ttf
+    - family: Quicksand
+      fonts:
+        - asset: ./assets/fonts/Quicksand-Light.ttf
+        - asset: ./assets/fonts/Quicksand-Medium.ttf
+        - asset: ./assets/fonts/Quicksand-Bold.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
