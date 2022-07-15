@@ -22,12 +22,16 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.bold),
                 iconTheme: IconThemeData(color: Colors.red)),
             textTheme: const TextTheme(
-                headline2: TextStyle(fontFamily: "Quicksand"),
-                headline4: TextStyle(fontFamily: "Quicksand"),
-                headline1: TextStyle(fontFamily: "EduQLDBeginner"),
-                headline3: TextStyle(fontFamily: "EduQLDBeginner"),
-                headline5: TextStyle(fontFamily: "Roboto"),
-                headline6: TextStyle(fontFamily: "Quicksand"))),
+              subtitle1: TextStyle(fontFamily: "Quicksand"),
+              subtitle2: TextStyle(fontFamily: "EduQLDBeginner"),
+              headline2: TextStyle(fontFamily: "Quicksand"),
+              headline4: TextStyle(fontFamily: "Quicksand"),
+              headline1: TextStyle(fontFamily: "EduQLDBeginner"),
+              headline3: TextStyle(fontFamily: "EduQLDBeginner"),
+              headline5: TextStyle(fontFamily: "Roboto"),
+              headline6: TextStyle(fontFamily: "Quicksand"),
+              button: TextStyle(color: Colors.white),
+            )),
         themeMode: ThemeMode.light,
         home: HomeScreen());
   }

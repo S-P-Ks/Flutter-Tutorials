@@ -7,13 +7,15 @@ import '../model/transaction.dart';
 
 class UserTransaction extends StatelessWidget {
   List<Transaction> _transactions;
-  UserTransaction(this._transactions, {Key? key}) : super(key: key);
+  Function deleteTransaction;
+  UserTransaction(this._transactions, this.deleteTransaction, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: Column(
-      children: <Widget>[TransactionList(_transactions)],
+      children: <Widget>[TransactionList(_transactions, deleteTransaction)],
     ));
   }
 }

@@ -33,10 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
         .toList();
   }
 
-  void _addNewTransaction(String title, double amount) {
+  void _addNewTransaction(String title, double amount, DateTime date) {
     setState(() {
-      _transactions.add(
-          Transaction(_transactions.length + 1, title, amount, DateTime.now()));
+      _transactions
+          .add(Transaction(_transactions.length + 1, title, amount, date));
       print(_transactions.length);
     });
   }
@@ -65,6 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
         });
   }
 
+  void _deleteTransaction(int id) {
+    setState(() {
+      _transactions.removeWhere((tx) => tx.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
         children: <Widget>[
           Chart(_recentTransactions),
-          UserTransaction(_transactions),
+          UserTransaction(_transactions, _deleteTransaction),
         ],
       )),
       floatingActionButton: FloatingActionButton(
