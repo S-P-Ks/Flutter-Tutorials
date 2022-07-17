@@ -18,6 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final amountController = TextEditingController();
   var bS;
 
+  var _showChart = false;
+
   late PersistentBottomSheetController _bSC;
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
@@ -47,15 +49,18 @@ class _HomeScreenState extends State<HomeScreen> {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         backgroundColor: Colors.transparent,
         builder: (_) {
-          return ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(20),
-              topLeft: Radius.circular(20),
+          return Container(
+            height: MediaQuery.of(ctx).size.height,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(20),
+                topLeft: Radius.circular(20),
+              ),
+              child: Container(
+                  padding: const EdgeInsets.all(10),
+                  color: Colors.black,
+                  child: AddTransaction(_addNewTransaction)),
             ),
-            child: Container(
-                padding: const EdgeInsets.all(10),
-                color: Colors.black,
-                child: AddTransaction(_addNewTransaction)),
           );
           // return GestureDetector(
           //   onTap: () {},
@@ -73,26 +78,59 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var appBar = AppBar(
+      title: const Text(
+        "Flutter App",
+      ),
+      actions: <Widget>[
+        IconButton(
+            onPressed: () => _startAddNewTransaction(context),
+            icon: const Icon(
+              Icons.add,
+              color: Colors.black,
+            ))
+      ],
+    );
+
+    final transactionInterface = Container(
+        height:
+            (MediaQuery.of(context).size.height - appBar.preferredSize.height) *
+                0.5,
+        child: UserTransaction(_transactions, _deleteTransaction));
+
+    final chartInterface = Container(
+        height: (MediaQuery.of(context).size.height -
+                appBar.preferredSize.height -
+                MediaQuery.of(context).padding.top) *
+            0.4,
+        child: Chart(_recentTransactions));
+
+    final isLandScape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
+
     return Scaffold(
       key: _key,
-      appBar: AppBar(
-        title: const Text(
-          "Flutter App",
-        ),
-        actions: <Widget>[
-          IconButton(
-              onPressed: () => _startAddNewTransaction(context),
-              icon: const Icon(
-                Icons.add,
-                color: Colors.black,
-              ))
-        ],
-      ),
+      appBar: appBar,
       body: SingleChildScrollView(
           child: Column(
         children: <Widget>[
-          Chart(_recentTransactions),
-          UserTransaction(_transactions, _deleteTransaction),
+          if (isLandScape)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text("Show Chart"),
+                Switch(
+                    value: _showChart,
+                    onChanged: (val) {
+                      setState(() {
+                        _showChart = val;
+                      });
+                    })
+              ],
+            ),
+          if (isLandScape) _showChart ? chartInterface : transactionInterface,
+          if (!isLandScape) chartInterface,
+          if (!isLandScape) transactionInterface,
         ],
       )),
       floatingActionButton: FloatingActionButton(
