@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorials/dummy_dart.dart';
 import 'package:flutter_tutorials/models/meal.dart';
